@@ -1,0 +1,33 @@
+
+#ifdef GO
+#define MAIN func main
+#define FUNC(name, var, type, ret_type) func name(var type) ret_type
+#define PRINT fmt.Println
+#else
+#define MAIN function main
+#define FUNC(name, var, type, ret_type) function name(var)
+#define PRINT console.log
+#endif
+
+#ifdef GO
+package main
+import "fmt"
+#endif
+
+FUNC(fib, n, int, int) {
+    if (n == 0) {
+        return 0
+    } else if (n == 1) {
+        return 1
+    } else {
+      	return fib(n-1) + fib(n-2)
+    }
+}
+
+MAIN() {
+       PRINT(fib(5))
+}
+
+#ifndef GO
+main()
+#endif
